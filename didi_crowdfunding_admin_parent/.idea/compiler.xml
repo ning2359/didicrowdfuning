@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="didi_crowdfunding_member_pay_consumer" />
+        <module name="didi_crowdfunding_member_zuul" />
+        <module name="didi_crowdfunding_admin_webui" />
+        <module name="didi_crowdfunding_admin_component" />
+        <module name="didi_crowdfunding_admin_utils" />
+        <module name="didi_crowdfunding_member_redis_provider" />
+        <module name="didi_crowdfunding_member_mysql_provider" />
+        <module name="didi_crowdfunding_member_order_consumer" />
+        <module name="didi_crowdfunding_member_api" />
+        <module name="didi_crowdfunding_member_eureka" />
+        <module name="didi_crowdfunding_member_project_consumer" />
+        <module name="didi_crowdfunding_admin_resource" />
+        <module name="didi_crowdfunding_member_authenticationconsumer" />
+        <module name="didi_crowdfunding_member_realname" />
+        <module name="didicrowdfundingmemberentity" />
+        <module name="didi_crowdfunding_admin_entrty" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="aaaaaaa" target="1.5" />
+      <module name="bbbbbbb" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

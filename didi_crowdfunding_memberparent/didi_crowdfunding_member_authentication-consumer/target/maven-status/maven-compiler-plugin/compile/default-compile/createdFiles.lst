@@ -1,0 +1,6 @@
+com\didi\crowd\test\CrowdTest.class
+com\didi\crowd\controller\PortalController.class
+com\didi\crowd\AuthenticationMain.class
+com\didi\crowd\config\ShortMessageProperties.class
+com\didi\crowd\controller\MemberController.class
+com\didi\crowd\config\CrowdWebMvcConfig.class

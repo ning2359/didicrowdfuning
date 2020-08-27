@@ -1,0 +1,12 @@
+com\aliyun\api\gateway\demo\util\HttpUtils$1.class
+com\didi\crowd\AccessPassResources.class
+com\didi\exception\AcctKeyException.class
+com\aliyun\api\gateway\demo\util\HttpUtils.class
+com\didi\crowd\CrowdUtil.class
+com\didi\crowd\CrowdConstant.class
+com\didi\crowd\ResultEntity.class
+com\didi\exception\LoginFailedException.class
+com\didi\exception\AccessForbiddenException.class
+com\didi\encrypd\MD5Encrypted.class
+com\didi\exception\UpdateAcctRepeatExcepyion.class
+com\didi\crowd\ApplicationContextUtils.class

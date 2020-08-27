@@ -1,0 +1,12 @@
+com\didi\entrty\utils\Student.class
+com\didi\entrty\menu\TMenu.class
+com\didi\entrty\role\TRole.class
+com\didi\entrty\utils\CertImg.class
+com\didi\entrty\utils\ParamData.class
+com\didi\entrty\auth\TAuth.class
+com\didi\entrty\admin\TAdmin.class
+com\didi\entrty\utils\Ticket.class
+com\didi\entrty\utils\Audit.class
+com\didi\entrty\utils\Score.class
+com\didi\entrty\cert\TCert.class
+com\didi\entrty\utils\Address.class

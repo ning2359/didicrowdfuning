@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.crowd.mapper.TProjectMapper">
+    <resultMap id="loadPortalProjectResultMap" type="com.didi.crowd.entrty.VO.PortalTypeVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="remark" property="remark"/>
+        <collection property="portalProjectVOList" column="id" select="com.didi.crowd.mapper.TProjectMapper.selectPortalProjectVOList" ofType="com.didi.crowd.entrty.VO.PortalProjectVO"/>
+    </resultMap>
+
+    <resultMap id="loadProjectDetailResultMap" type="com.didi.crowd.entrty.VO.DetailProjectVO">
+        <id column="id" property="projectId"/>
+        <result column="project_name" property="projectName"/>
+        <result column="project_description" property="projectDesc"/>
+        <result column="money" property="money"/>
+        <result column="status" property="status"/>
+        <result column="deploydate" property="deployDate"/>
+        <result column="supportmoney" property="supportMoney"/>
+        <result column="follower" property="followerCount"/>
+        <result column="supporter" property="supporterCount"/>
+        <result column="header_picture_path" property="headerPicturePath"/>
+        <collection property="detailPicturePathList"
+                    column="id" ofType="string"
+                    select="com.didi.crowd.mapper.TProjectMapper.selectDetailPicturePath"/>
+        <collection property="detailReturnVOList"
+                    column="id"
+                    ofType="com.didi.crowd.entrty.VO.DetailReturnVO"
+                    select="com.didi.crowd.mapper.TProjectMapper.selectDeatailReturnVO"/>
+    </resultMap>
+    <select id="selectPortalTypeVOList" resultMap="loadPortalProjectResultMap">
+        select  id,name,remark from t_type
+    </select>
+
+    <select id="selectPortalProjectVOList" resultType="com.didi.crowd.entrty.VO.PortalProjectVO">
+        select
+            t_project.id projectId,
+            project_name projectName,
+            money,
+            deploydate deployDate,
+            supportmoney/money*100 percentage,
+            header_picture_path headerPicturePath
+        from t_project
+        left join t_project_type on t_project_type.projectid = t_project.id
+        where t_project_type.typeid=#{id}
+        order by t_project.id desc
+        LIMIT 0,4
+    </select>
+    
+    <select id="selectDetailPicturePath" resultType="string">
+        select item_pic_path from t_project_item_pic where projectid=#{id}
+    </select>
+
+    <select id="selectDeatailReturnVO" resultType="com.didi.crowd.entrty.VO.DetailReturnVO">
+    SELECT
+        t.id returnId,
+        supportmoney supportMoney,
+        content,
+        signalpurchase signalPurchase,
+        purchase,
+        freight,
+        returndate returnDate,
+        ( SELECT COUNT(*) FROM t_return_member rm WHERE rm.return_id = t.id ) supproter
+    FROM
+        t_return t
+    WHERE
+        projectid = #{id}
+    GROUP BY
+        t.id
+    </select>
+    <select id="selectDetailProjectVO" resultMap="loadProjectDetailResultMap">
+      SELECT
+            p.id,
+            project_name,
+            project_description,
+            money,
+            STATUS,
+            deploydate,
+            p.supportmoney,
+            supporter,
+            DAY,
+            p.supportmoney / money * 100 percentage,
+            follower,
+            header_picture_path
+        FROM
+            t_project p
+        WHERE p.id = #{projectId}
+
+</select>
+</mapper>

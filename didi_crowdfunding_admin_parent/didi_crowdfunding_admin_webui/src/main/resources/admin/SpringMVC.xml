@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <!-- 扫描 有注解的包 -->
+    <context:component-scan base-package="com.didi"/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--  开启注解  -->
+    <mvc:annotation-driven/>
+    <mvc:view-controller path="/admin/to/login/page.html" view-name="admin_login"/>
+    <mvc:view-controller path="/admin/to/main/page.html" view-name="admin_main"/>
+    <mvc:view-controller path="/admin/to/add.html" view-name="admin_add"/>
+    <mvc:view-controller path="/role/to/page.html" view-name="role_page"/>
+    <mvc:view-controller path="/menu/to/page.html" view-name="menu_page"/>
+    <mvc:view-controller path="/process/to/show.html" view-name="process_show"/>
+    <mvc:view-controller path="/cert/to/show.html" view-name="cert_show"/>
+    <mvc:view-controller path="/realname/to/audit.html" view-name="realname_show"/>
+    <!--
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/admin_login.html"/>
+            <mvc:exclude-mapping path="/admin/to/main/page.html"/>
+            <mvc:exclude-mapping path="/admin/do/logout.html"/>
+            <mvc:exclude-mapping path="/admin/do/login.html"/>
+            <bean class="com.didi.admin.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    -->
+        <bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="com.didi.exception.LoginFailedException">admin_login</prop>
+                <prop key="com.didi.exception.AcctKeyException">admin_add</prop>
+                <prop key="java.lang.Exception">system_error</prop>
+            </props>
+        </property>
+    </bean>
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+        <property name="maxUploadSize" value="38000000" /><!-- 上传最大文件限制 -->
+        <property name="maxInMemorySize" value="4096" /><!-- 读取文件到内存中的最大字节数，默认1024字节 -->
+        <property name="defaultEncoding" value="utf-8" />
+    </bean>
+
+</beans>

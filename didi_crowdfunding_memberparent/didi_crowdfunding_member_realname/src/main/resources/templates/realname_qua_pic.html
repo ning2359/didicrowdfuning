@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <base th:href="@{/}"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="script/docs.min.js"></script>
+    <style>
+        #footer {
+            padding: 15px 0;
+            background: #fff;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#qualificationPicture").click(function() {
+                $("[name=qualificationPictureList]").click();
+                $("#pic").attr("style","display: none");
+            });
+            $("[name=qualificationPictureList]").change(function(event) {
+                $("#showQualificationPicture").empty();
+                window.files = event.target.files;
+                var url = window.url || window.webkitURL;
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    var path = url.createObjectURL(file);
+                    var imgHtml = "<img src='"+path+"' class='tu img'  />&nbsp;&nbsp;&nbsp;";
+                    $("#showQualificationPicture").append(imgHtml);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="navbar-wrapper">
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html" style="font-size:32px;">尚筹网-创意产品众筹平台</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse" style="float:right;">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                    class="glyphicon glyphicon-user"></i> [[${session.loginMember.userName}]]<span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="member.html"><i class="glyphicon glyphicon-scale"></i> 会员中心</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
+                                <li class="divider"></li>
+                                <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+</div>
+
+<div class="container theme-showcase" role="main">
+    <div class="page-header">
+        <h1>实名认证 - 申请</h1>
+    </div>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation"><a href="#"><span class="badge">1</span> 基本信息</a></li>
+        <li role="presentation" class="active"><a href="#"><span class="badge">2</span> 资质文件上传</a></li>
+        <li role="presentation"><a href="#"><span class="badge">3</span> 邮箱确认</a></li>
+        <li role="presentation"><a href="#"><span class="badge">4</span> 申请确认</a></li>
+    </ul>
+    <form action="realname/save/qualification/pic" method="post" enctype="multipart/form-data" role="form" style="margin-top:20px;">
+        <div class="form-group">
+            <label for="qualificationPicture" th:text="请上传">手执身份证照片</label>
+            <br>
+            <div th:if="${#strings.isEmpty(certs)}"><h4 style="color: red">&nbsp;&nbsp;&nbsp;查询上传资质图片失败！</h4></div>
+                <div th:if="${not #strings.isEmpty(certs)}" class="form-group">
+                    <label for="certName">要上传资质图片的名称：</label>
+                    <p>注：一定要根据名称顺序上传</p>
+                    <div th:each="cert:${certs}">
+                    <span style="color: red" id="certName" th:text="${cert.name}">,</span>
+                        <input type="checkbox" name="certIds" th:value="${cert.id}"  checked="checked" />
+                    </div>
+                </div>
+            <br>
+            <input type="file" multiple="multiple" name="qualificationPictureList" style="display: none;">
+            <button id="qualificationPicture" type="button" class="btn btn-primary btn-lg active">上传图片</button>
+            <label class="control-label">支持jpg、jpeg、png、gif格式，大小不超过2M，建议尺寸：宽740px</label>
+            <div id="showQualificationPicture"></div>
+            <br>
+            <img id="pic"  src="img/pic.jpg">
+        </div>
+        <button type="button" class="btn btn-default">上一步</button>
+        <button id="nextBtn" type="submit"  class="btn btn-success">下一步</button>
+    </form>
+    <hr>
+</div> <!-- /container -->
+<div class="container" style="margin-top:20px;">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div id="footer">
+                <div class="footerNav">
+                    <a rel="nofollow" href="http://www.atguigu.com">关于我们</a> | <a rel="nofollow"
+                                                                                  href="http://www.atguigu.com">服务条款</a>
+                    | <a rel="nofollow" href="http://www.atguigu.com">免责声明</a> | <a rel="nofollow"
+                                                                                    href="http://www.atguigu.com">网站地图</a>
+                    | <a rel="nofollow" href="http://www.atguigu.com">联系我们</a>
+                </div>
+                <div class="copyRight">
+                    Copyright ?2017-2017 atguigu.com 版权所有
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show')
+    });
+</script>
+</body>
+</html>

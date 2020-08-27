@@ -1,0 +1,13 @@
+server:
+  port: 3000
+spring:
+  application:
+    name: didi-crowd-redis
+  redis:
+    host: 192.168.172.128
+    password: 123456
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka

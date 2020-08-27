@@ -1,0 +1,53 @@
+server:
+  port: 9090
+  tomcat:
+    max-swallow-size: 100MB
+spring:
+  application:
+    name: didi-crowd-realname
+  datasource:
+    url: jdbc:mysql://localhost:3306/project_crowd?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    password: 123456
+    host: 192.168.172.128
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  mail:
+    port: 25
+    host: localhost
+    username: admin@didi.com
+    password: admin
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          localhost: localhost
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+
+aliyun:
+  oss:
+    access-key-id: LTAI4GCdz1FbvqwwfAyhxVYq
+    access-key-secret: 5qIc4LUxz2OTZJXeJZEElCSYqsiHI5
+    bucket-domain: https://didibucket.oss-cn-shanghai.aliyuncs.com
+    bucket-name: didibucket
+    end-point: http://oss-cn-shanghai.aliyuncs.com
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+

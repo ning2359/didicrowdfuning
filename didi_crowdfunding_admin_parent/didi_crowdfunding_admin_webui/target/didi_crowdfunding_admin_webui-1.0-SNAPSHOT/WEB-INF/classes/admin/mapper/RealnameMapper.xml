@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.realname.mapper.RealnameMapper">
+
+    <select id="queryTicketByPiid" resultMap="queryTicketByPiidResultMap">
+        select * from t_member_procdef where procdef_id=#{processInstanceId}
+    </select>
+    <resultMap id="queryTicketByPiidResultMap" type="com.didi.entrty.utils.Ticket">
+        <id column="id" property="id"/>
+        <result column="procdef_id" property="memberId"/>
+        <result column="member_id" property="memberId"/>
+    </resultMap>
+    <select id="queryMemberByMemberId" resultMap="queryMemberByTicketResultMap">
+	SELECT
+         id,
+         login_acct,
+         user_name,
+         email,
+         accttype,
+         authstatus,
+		 IF(LENGTH(realname)>6,REPLACE(realname,SUBSTR(realname,2,2),'**'),REPLACE(realname,SUBSTR(realname,2,2),'*')) realname,
+		 REPLACE(cardnum,SUBSTR(cardnum,3,14),'**************') cardnum,
+		 REPLACE(phone,SUBSTR(phone,4,4),'****') phone
+    FROM
+	    t_member
+    WHERE
+	    id = #{memberId}
+    </select>
+
+    <resultMap id="queryMemberByTicketResultMap" type="com.didi.crowd.entrty.PO.TMember">
+        <id column="id" property="id"/>
+        <result column="login_acct" property="loginAcct"/>
+        <result column="user_name" property="userName"/>
+        <result column="email" property="email"/>
+        <result column="accttype" property="accttype"/>
+        <result column="authstatus" property="authstatus"/>
+    </resultMap>
+    <select id="queryCertImgsByMemberid" resultMap="queryCertImgsByMemberidResultMap">
+    SELECT
+	    a.qua_pic_path,
+	    b.name
+    FROM
+	    t_member_qua_pic a
+	JOIN t_cert b ON a.cert_id = b.id
+    WHERE
+	    a.member_id = #{memberId}
+    </select>
+    <resultMap id="queryCertImgsByMemberidResultMap" type="com.didi.entrty.utils.CertImg">
+        <result column="qua_pic_path" property="qualificationpcture"/>
+        <result column="name" property="certName"/>
+    </resultMap>
+</mapper>

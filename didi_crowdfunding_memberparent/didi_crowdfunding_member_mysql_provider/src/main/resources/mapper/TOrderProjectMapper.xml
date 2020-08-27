@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.crowd.mapper.TOrderProjectMapper">
+
+    <select id="selectOrderProjectVO" resultType="com.didi.crowd.entrty.VO.OrderProjectVO">
+SELECT DISTINCT
+	t_project.id projectId,
+	project_name projectName,
+	content returnContent,
+	`description_simple` launchName,
+	t_return.`supportmoney` supportPrice,
+	`freight` freight,
+	`count` returnCount,
+	`signalpurchase` signalPurchase,
+	`purchase` purchase
+FROM
+	t_project
+	LEFT JOIN t_member_launch_info ON t_project.memberid = t_member_launch_info.memberid
+	LEFT JOIN t_return ON t_project.id = t_return.projectid
+WHERE
+	t_return.id = #{returnId}
+    </select>
+</mapper>

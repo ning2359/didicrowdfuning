@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Statistic">
+    <option name="excludedDirectories">
+      <list>
+        <option value="$PROJECT_DIR$/didi_crowdfunding_admin_webui/src/main/webapp/bootstrap" />
+        <option value="$PROJECT_DIR$/didi_crowdfunding_admin_webui/src/main/webapp/css" />
+        <option value="$PROJECT_DIR$/didi_crowdfunding_admin_webui/src/main/webapp/fonts" />
+        <option value="$PROJECT_DIR$/didi_crowdfunding_admin_webui/src/main/webapp/img" />
+        <option value="$PROJECT_DIR$/didi_crowdfunding_admin_webui/src/main/webapp/js" />
+        <option value="$PROJECT_DIR$/didi_crowdfunding_admin_webui/src/main/webapp/layer" />
+        <option value="$PROJECT_DIR$/didi_crowdfunding_admin_webui/src/main/webapp/script" />
+        <option value="$PROJECT_DIR$/didi_crowdfunding_admin_webui/src/main/webapp/ztree" />
+        <option value="$PROJECT_DIR$/didi_crowdfunding_admin_webui/target" />
+        <option value="$PROJECT_DIR$/.idea" />
+      </list>
+    </option>
+  </component>
+</project>

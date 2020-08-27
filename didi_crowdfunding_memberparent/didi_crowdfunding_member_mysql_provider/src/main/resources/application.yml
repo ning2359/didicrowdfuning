@@ -1,0 +1,26 @@
+server:
+  port: 2000
+spring:
+  application:
+    name: didi-mysql-provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/project_crowd?characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+    initialization-mode: always
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+
+logging:
+  level:
+    com.didi.crowd.mapper: debug
+    com.didi.crowd.test: debug
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+

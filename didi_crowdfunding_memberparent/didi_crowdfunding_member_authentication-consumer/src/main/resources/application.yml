@@ -1,0 +1,31 @@
+server:
+  port: 4000
+
+spring:
+  application:
+    name: didi-auth-crowd
+  thymeleaf:
+    prefix: classpath:/thymeleafs/
+    suffix: .html
+  redis:
+    host: 192.168.172.128
+    password: 123456
+  session:
+    store-type: redis
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+
+short:
+  message:
+    app-code: 08ea57b782294f1c9b30c5cce02b7240
+    host: https://feginesms.market.alicloudapi.com
+    method: GET
+    path: /codeNotice
+    sign: 151003
+    skin: 84683
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

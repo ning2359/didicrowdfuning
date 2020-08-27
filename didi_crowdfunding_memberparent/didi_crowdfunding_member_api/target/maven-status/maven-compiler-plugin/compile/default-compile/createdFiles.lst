@@ -1,0 +1,2 @@
+com\didi\crowd\api\MySqlRemoteService.class
+com\didi\crowd\api\RedisRemoteService.class

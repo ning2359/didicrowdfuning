@@ -1,0 +1,32 @@
+server:
+  port: 5000
+  tomcat:
+    max-swallow-size: 100MB
+spring:
+  application:
+    name: didi-crowd-pro
+  redis:
+    password: 123456
+    host: 192.168.172.128
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+aliyun:
+  oss:
+    access-key-id: LTAI4GCdz1FbvqwwfAyhxVYq
+    access-key-secret: 5qIc4LUxz2OTZJXeJZEElCSYqsiHI5
+    bucket-domain: https://didibucket.oss-cn-shanghai.aliyuncs.com
+    bucket-name: didibucket
+    end-point: http://oss-cn-shanghai.aliyuncs.com
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.crowd.mapper.TTypeMapper">
+
+    <insert id="insertTypeRelationship">
+        insert into t_project_type(`projectid`,`typeid`) values  (#{projectId},#{typeId})
+    </insert>
+</mapper>

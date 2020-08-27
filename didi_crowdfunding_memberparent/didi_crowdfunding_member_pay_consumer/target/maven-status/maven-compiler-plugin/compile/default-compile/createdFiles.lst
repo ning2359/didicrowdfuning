@@ -1,0 +1,6 @@
+com\didi\corwd\controller\PayConsumerController.class
+test\TestAliPay.class
+com\didi\corwd\config\PayProperties.class
+com\didi\corwd\config\CrowdfundingWebMvcConfig.class
+META-INF\spring-configuration-metadata.json
+com\didi\corwd\PayMain.class
