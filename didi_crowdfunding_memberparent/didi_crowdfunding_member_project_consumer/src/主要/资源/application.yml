@@ -23,7 +23,7 @@ eureka:
 aliyun:
   oss:
     access-key-id: LTAI4GCdz1FbvqwwfAyhxQec
-    access-key-secret: 5qIc4LUxz2OTZJXeJZEElCSYqsiHI5
+    access-key-secret: 5qIc4LUxz2OTZJXeJZEElCSYqssdsa
     bucket-domain: https://didibucket.oss-cn-shanghai.aliyuncs.com
     bucket-name: didibucket
     end-point: http://oss-cn-shanghai.aliyuncs.com
